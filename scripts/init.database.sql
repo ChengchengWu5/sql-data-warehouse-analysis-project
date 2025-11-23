@@ -16,7 +16,6 @@ WARNING:
 
 -- Create the database DataWarehouse
 
-
 USE master;
 GO
 
