@@ -20,16 +20,16 @@ USE master;
 GO
 
 -- Drop and recreate the database DataWarehouse if it exists
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DWH_RetailSales')
 BEGIN
-    ALTER DATABASE Datawarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE DataWarehouse;
+    ALTER DATABASE DWH_RetailSales SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE DWH_RetailSales;
 END;
 GO
 
-CREATE DATABASE DataWarehouse;
+CREATE DATABASE DWH_RetailSales;
 
-USE DataWarehouse;
+USE DWH_RetailSales;
 
 -- Create Schema
 
