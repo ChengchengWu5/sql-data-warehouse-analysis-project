@@ -11,20 +11,9 @@ Script Purpose:
 
 USE DWH_RetailSales;
 
-IF OBJECT_ID ('bronze.customers', 'U') IS NOT NULL
-	DROP TABLE bronze.customers;
-CREATE TABLE bronze.customers (
-	customer_id INT,
-	age INT,
-	gender NVARCHAR(20),
-	marital_status NVARCHAR(20),
-	customer_city NVARCHAR(50),
-	customer_state NVARCHAR(50)
-	);
-
-IF OBJECT_ID ('bronze.transactions', 'U') IS NOT NULL
-	DROP TABLE bronze.transactions;
-CREATE TABLE bronze.transactions (
+IF OBJECT_ID ('bronze.source1_transactions', 'U') IS NOT NULL
+	DROP TABLE bronze.source1_transactions;
+CREATE TABLE bronze.source1_transactions (
 	transaction_id INT,
 	customer_id INT,
 	product_id INT,
@@ -35,9 +24,20 @@ CREATE TABLE bronze.transactions (
 	payment_method NVARCHAR(50)
 	);
 
-IF OBJECT_ID ('bronze.products', 'U') IS NOT NULL
-	DROP TABLE bronze.products;
-CREATE TABLE bronze.products (
+IF OBJECT_ID ('bronze.source2_customers', 'U') IS NOT NULL
+	DROP TABLE bronze.source2_customers;
+CREATE TABLE bronze.source2_customers (
+	customer_id INT,
+	age INT,
+	gender NVARCHAR(20),
+	marital_status NVARCHAR(20),
+	customer_city NVARCHAR(50),
+	customer_state NVARCHAR(50)
+	);
+
+IF OBJECT_ID ('bronze.source2_products', 'U') IS NOT NULL
+	DROP TABLE bronze.source2_products;
+CREATE TABLE bronze.source2_products (
 	product_id INT,
 	product_name NVARCHAR(50),
 	product_category NVARCHAR(50),
