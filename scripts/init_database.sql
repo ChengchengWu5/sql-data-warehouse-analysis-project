@@ -1,0 +1,46 @@
+/* 
+=====================================================================================
+Create Database and Schemas
+---------------------------
+
+Script Purpose:
+    The following script creates a new database named 'DWH_RetailSales' after checking 
+    if it is already exists. If it exists, it then will be dropped, and then a new 
+    database with the same name will be created. The script also creates three schemas 
+    in the database named 'bronze', 'silver', and 'gold'.
+
+WARNING:
+    Running this script with drop the 'DWH_RetailSales' database if it exists, thus all 
+    data in the database will be permanently deleted. Please proceed with caution and 
+    make sure that you have proper backups before running this script.
+=======================================================================================
+*/
+
+
+-- Create the database DWH_RetailSales
+
+USE master;
+GO
+
+-- Drop and recreate the database DWH_RetailSales if it exists
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DWH_RetailSales')
+BEGIN
+    ALTER DATABASE DWH_RetailSales SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE DWH_RetailSales;
+END;
+GO
+
+CREATE DATABASE DWH_RetailSales;
+
+USE DWH_RetailSales;
+
+-- Create Schema
+
+CREATE SCHEMA bronze;
+GO
+  
+CREATE SCHEMA silver;
+GO
+  
+CREATE SCHEMA gold;
+GO
