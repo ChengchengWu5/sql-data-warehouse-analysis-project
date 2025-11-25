@@ -1,4 +1,13 @@
--- Create tables in the Bronze layer
+/*
+=============================================================
+DDL Script: Create tables in the Bronze schema
+----------------------------------------------
+Script Purpose:
+	This script creates tables in the 'bronze' schema - 
+	dropping tables first if they already exist in the schema,
+	it then define the DDL structure of the tables.
+=============================================================
+*/
 
 IF OBJECT_ID ('bronze.customers', 'U') IS NOT NULL
 	DROP TABLE bronze.customers;
